@@ -16,6 +16,10 @@ public class LLine {
 	}
 	
 	public void process() throws LSystemSymbolException, LSystemLengthException {
+		//first check, if there is no sequence of chars then we will never get the 10 iterations
+		if(line.length == 0) {
+			throw new LSystemLengthException();
+		}
 		
 		ArrayList<Character> chars = new ArrayList<>();
 		
@@ -37,10 +41,6 @@ public class LLine {
 		}
 		this.line = listToArray(chars);
 		
-		//if there is no sequence of chars then we will never get the 10 iterations
-		if(line.length == 0) {
-			throw new LSystemLengthException();
-		}
 	}
 	
 	
