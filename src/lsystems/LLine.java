@@ -1,5 +1,6 @@
 package lsystems;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -15,8 +16,31 @@ public class LLine {
 	}
 	
 	public void process() throws LSystemSymbolException, LSystemLengthException {
+		//first exception, if there is no sequence of chars then we will never get the 10 iterations
+		if(line.length == 0) {
+			throw new LSystemLengthException();
+		}
 		
-	}
+		ArrayList<Character> chars = new ArrayList<>();
+		
+		for(char currChar : line) {
+			boolean doesMatchExist = false;
+			for(LRule currRule : rules) {
+				if(currChar == currRule.getMatch()) {
+					doesMatchExist = true;
+					char[] tempList = currRule.getBody();
+					for(char c : tempList) {
+						chars.add(c);
+					}
+				}
+			}
+			//second exception, if there is no rule that applies to character in sequence
+			if(!doesMatchExist) {
+				throw new LSystemSymbolException();
+			}
+		}
+		this.line = listToArray(chars);
+		}
 	
 	
 	

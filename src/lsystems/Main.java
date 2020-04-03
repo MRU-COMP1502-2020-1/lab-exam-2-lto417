@@ -7,17 +7,27 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		LRule r1 = new A_BC();
-		LRule r2 = new B_A();
-		LRule r3 = new C_B();
+//		LRule r1 = new A_BC();
+//		LRule r2 = new B_A();
+//		LRule r3 = new C_B();
+//		
+//		Set<LRule> rules = new HashSet<>();
+//		rules.add(r1);
+//		rules.add(r2);
+//		rules.add(r3);
+//
+//		char[] lineChar = {'A'};
+//		LLine line = new LLine(lineChar, rules);
 		
-		Set<LRule> rules = new HashSet<>();
-		rules.add(r1);
-		rules.add(r2);
-		rules.add(r3);
+		char[] test = {'A'};
+		Set<LRule> rules = new HashSet<LRule>();
+		
+		rules.add(new A_BC());
+		rules.add(new B_A());
+		rules.add(new C_B());
 
-		char[] lineChar = {'A'};
-		LLine line = new LLine(lineChar, rules);
+		LLine line = new LLine(test, rules);
+
 
 		System.out.println("Step 0:" + line);
 		try {
